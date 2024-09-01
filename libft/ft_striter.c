@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:26:19 by moaljabe          #+#    #+#             */
 /*   Updated: 2024/08/30 15:26:21 by moaljabe         ###   ########.fr       */

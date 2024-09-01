@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:09:29 by moaljabe          #+#    #+#             */
 /*   Updated: 2024/08/30 15:09:30 by moaljabe         ###   ########.fr       */

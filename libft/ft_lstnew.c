@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 13:06:31 by moaljabe          #+#    #+#             */
 /*   Updated: 2024/08/31 13:06:32 by moaljabe         ###   ########.fr       */
@@ -15,9 +15,10 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list *res;
+	t_list	*res;
 
-	if ((res = (t_list *)ft_memalloc(sizeof(t_list))))
+	res = (t_list *)ft_memalloc(sizeof(t_list));
+	if (res)
 	{
 		if (!content)
 		{
@@ -26,7 +27,8 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		}
 		else
 		{
-			if (!(res->content = ft_memalloc(content_size)))
+			res->content = ft_memalloc(content_size);
+			if (!(res->content))
 			{
 				free(res);
 				return (NULL);

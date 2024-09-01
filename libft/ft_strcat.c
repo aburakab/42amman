@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 15:00:20 by moaljabe          #+#    #+#             */
 /*   Updated: 2018/06/30 15:00:30 by moaljabe         ###   ########.fr       */
@@ -14,10 +14,14 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
 
 	i = ft_strlen(s1);
-	while ((s1[i] = *s2++))
+	while (*s2)
+	{
+		s1[i] = *s2;
+		s2++;
 		i++;
+	}
 	return (s1);
 }

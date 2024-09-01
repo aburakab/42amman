@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstaddback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:54:10 by moaljabe          #+#    #+#             */
 /*   Updated: 2024/08/31 15:54:11 by moaljabe         ###   ########.fr       */
@@ -14,7 +14,7 @@
 
 void	ft_lstaddback(t_list **alst, t_list *new)
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	if (alst && *alst)
 	{

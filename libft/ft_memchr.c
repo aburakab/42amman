@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 14:02:34 by moaljabe          #+#    #+#             */
 /*   Updated: 2018/06/30 14:02:35 by moaljabe         ###   ########.fr       */
@@ -14,8 +14,8 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char *ptr;
-	unsigned char sym;
+	unsigned char	*ptr;
+	unsigned char	sym;
 
 	ptr = (unsigned char *)s;
 	sym = (unsigned char)c;

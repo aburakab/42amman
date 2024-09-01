@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:19:17 by moaljabe          #+#    #+#             */
 /*   Updated: 2024/08/30 16:19:18 by moaljabe         ###   ########.fr       */
@@ -12,9 +12,13 @@
 
 #include "libft.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+int	ft_strequ(char const *s1, char const *s2)
 {
 	if (s1 && s2)
-		return (ft_strcmp(s1, s2) ? 0 : 1);
+	{
+		if (ft_strcmp(s1, s2))
+			return (0);
+		return (1);
+	}
 	return (0);
 }

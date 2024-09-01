@@ -89,10 +89,20 @@ SOURCES_LIST =	ft_atoi.c\
 				ft_tolower.c\
 				ft_toupper.c
 
-SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
-OBJECTS_DIRECTORY = obj/
+OBJECTS_DIRECTORY_NAME = obj
+OBJECTS_DIRECTORY = $(OBJECTS_DIRECTORY_NAME)/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
 OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
+
+ifeq ($(OS),Windows_NT)
+    RM = del /Q
+    RMDIR_OBJECTS = rmdir /S /Q $(OBJECTS_DIRECTORY_NAME)
+    MKDIR = mkdir $(OBJECTS_DIRECTORY_NAME)
+else
+    RM = rm -f
+    RMDIR_OBJECTS = rm -rf $(OBJECTS_DIRECTORY)
+    MKDIR = @mkdir -p $(OBJECTS_DIRECTORY)
+endif
 
 .PHONY: all clean fclean re
 
@@ -102,14 +112,17 @@ $(NAME): $(OBJECTS_DIRECTORY) $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 
+$(OBJECTS_DIRECTORY):
+	$(MKDIR)
+
 $(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) $(INCLUDES) $< -o $@
 
 clean:
-	@rm -rf $(OBJECTS_DIRECTORY)
+	@if exist "$(OBJECTS_DIRECTORY)" $(RMDIR_OBJECTS)
 
 fclean: clean
-	@rm -f $(NAME)
+	@if exist "$(NAME)" $(RM) $(NAME)
 
 re:
 	@$(MAKE) fclean

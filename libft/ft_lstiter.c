@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 13:32:16 by moaljabe          #+#    #+#             */
 /*   Updated: 2024/08/31 13:32:17 by moaljabe         ###   ########.fr       */
@@ -15,9 +15,11 @@
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
 	if (f)
+	{
 		while (lst)
 		{
 			f(lst);
 			lst = lst->next;
 		}
+	}
 }
