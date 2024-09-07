@@ -12,73 +12,60 @@
 
 #include "libft.h"
 
-static size_t	ft_itoa_len(long num)
+#include "libft.h"
+
+static int	number_of_digits(int nb)
+/**
+ * @brief Calculates the number of digits in an integer.
+ * 
+ * This function takes an integer `nb` and returns the number of digits
+ * in its decimal representation. If `nb` is zero or negative, the 
+ * function accounts for the negative sign and counts the digits accordingly.
+ * 
+ * @param nb The integer whose number of digits is to be calculated.
+ * @return int The number of digits in the integer. If the number is 
+ * zero or negative, the count includes the negative sign as well.
+ * 
+ * @note A zero or negative number will increase the length by 1.
+ */
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
-	if (num == 0)
-		return (1);
-	if (num < 0)
-	{
+	if (nb <= 0)
 		len++;
-		num = -num;
-	}
-	while (num >= 1)
+	while (nb != 0)
 	{
+		nb = nb / 10;
 		len++;
-		num /= 10;
 	}
 	return (len);
 }
 
-static char	*ft_num_to_str(long num, char *str, size_t len)
-{
-	str = ft_strnew(sizeof(char) * (len + 1));
-	if (str == NULL)
-		return (NULL);
-	if (num < 0)
-	{
-		str[0] = '-';
-		num = -num;
-	}
-	len--;
-	while (len)
-	{
-		str[len] = (num % 10) + '0';
-		num /= 10;
-		len--;
-	}
-	if (str[0] != '-')
-		str[0] = (num % 10) + '0';
-	return (str);
-}
-
 char	*ft_itoa(int n)
-/**
- * ft_itoa - Converts an integer to a null-terminated string.
- *
- * @n: The integer to be converted to a string.
- *
- * This function allocates (with malloc) and returns a string representing the integer `n`.
- * The function handles negative numbers, zero, and positive numbers. It converts the
- * integer to a string of digits, ensuring the string is null-terminated.
- *
- * If memory allocation fails, the function returns NULL.
- *
- * Return: A pointer to the newly allocated string representing the integer, or NULL
- * if memory allocation fails.
- */
 {
-	long	num;
-	size_t	len;
+	int		i;
 	char	*str;
 
-	num = n;
-	len = ft_itoa_len(num);
-	str = 0;
-	str = ft_num_to_str(num, str, len);
+	i = number_of_digits(n);
+	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
+	str[i--] = '\0';
+	if (n == 0)
+	{
+		str[0] = '0';
+		return (str);
+	}
+	if (n < 0)
+		str[0] = '-';
+	while (n != 0)
+	{
+		if (str[0] == '-')
+			str[i--] = '0' + -(n % 10);
+		else
+			str[i--] = '0' + (n % 10);
+		n = n / 10;
+	}
 	return (str);
 }

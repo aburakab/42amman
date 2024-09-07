@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: moaljabe <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 13:39:23 by moaljabe          #+#    #+#              #
 #    Updated: 2018/08/06 13:57:14 by moaljabe         ###   ########.fr        #
