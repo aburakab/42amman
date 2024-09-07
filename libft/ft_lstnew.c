@@ -14,6 +14,21 @@
 #include <stdlib.h>
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
+/**
+ * ft_lstnew - Allocates and initializes a new linked list element.
+ *
+ * @content: A pointer to the content to be stored in the new element.
+ * @content_size: The size of the content to be stored.
+ *
+ * This function allocates memory (with `malloc`) for a new linked list element of type `t_list`.
+ * The `content` field is initialized to the value of the `content` parameter, and the `content_size`
+ * field is set to the value of `content_size`. If `content` is NULL, the function sets the `content`
+ * field to `NULL` and `content_size` to 0.
+ *
+ * The `next` pointer of the new element is initialized to `NULL`.
+ *
+ * Return: A pointer to the newly allocated list element, or NULL if memory allocation fails.
+ */
 {
 	t_list	*res;
 

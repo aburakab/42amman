@@ -11,6 +11,17 @@
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
+/**
+ * ft_isdigit - Checks if a character is a digit (0-9).
+ *
+ * @c: The character to be checked.
+ *
+ * This function checks whether the character `c` is a decimal digit, i.e., a character
+ * between '0' and '9' in the ASCII table. If `c` is a digit, the function returns 1 (true).
+ * If `c` is not a digit, the function returns 0 (false).
+ *
+ * Return: 1 if `c` is a digit, 0 otherwise.
+ */
 {
 	return (c >= '0' && c <= '9');
 }

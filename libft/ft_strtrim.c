@@ -13,6 +13,23 @@
 #include "libft.h"
 
 char	*ft_strtrim(char const *s)
+/**
+ * ft_strtrim - Trims whitespace from the beginning and end of a string.
+ *
+ * @s: The input string to be trimmed.
+ *
+ * This function allocates (with malloc) and returns a copy of the string `s` with
+ * leading and trailing whitespace characters removed. Whitespace characters are
+ * defined as spaces (' '), tabs ('\t'), and newlines ('\n'). If the string consists
+ * entirely of whitespace characters, an empty string is returned. If the input
+ * string `s` is NULL or if memory allocation fails, the function returns NULL.
+ *
+ * The caller is responsible for freeing the memory allocated for the returned trimmed
+ * string to avoid memory leaks.
+ *
+ * Return: A pointer to the newly allocated trimmed string, or NULL if memory
+ * allocation fails or if the input string `s` is NULL.
+ */
 {
 	char	*result;
 	size_t	i;
@@ -28,7 +45,11 @@ char	*ft_strtrim(char const *s)
 		start++;
 	while (finish && (ft_isblank(s[finish - 1]) || s[finish - 1] == '\n'))
 		finish--;
-	if ((result = ft_strnew((finish > start) ? (finish - start) : 0)))
+	if (finish > start)
+		result = ft_strnew(finish - start);
+	else
+		result = ft_strnew(0);
+	if (result)
 	{
 		while (start < finish)
 			result[i++] = s[start++];

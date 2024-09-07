@@ -14,6 +14,19 @@
 #include <stdlib.h>
 
 void	ft_strdel(char **as)
+/**
+ * ft_strdel - Frees the memory of a string and sets the pointer to NULL.
+ *
+ * @as: A pointer to the string (char *) that needs to be deleted.
+ *
+ * This function takes a double pointer to a string (char **as), frees the memory
+ * that the string points to, and then sets the pointer itself to NULL to avoid
+ * dangling pointers. It ensures that the memory is properly deallocated and
+ * the pointer is safely reset. The function does nothing if the input pointer
+ * or the pointer it points to is NULL.
+ *
+ * Return: None (void).
+ */
 {
 	if (as && *as)
 	{

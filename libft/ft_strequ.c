@@ -13,6 +13,21 @@
 #include "libft.h"
 
 int	ft_strequ(char const *s1, char const *s2)
+/**
+ * ft_strequ - Compares two strings for equality.
+ *
+ * @s1: The first string to be compared.
+ * @s2: The second string to be compared.
+ *
+ * This function compares the two strings `s1` and `s2` to check if they are identical.
+ * The comparison is done lexicographically, meaning the strings are compared character
+ * by character. If the two strings are identical (including the null terminator), the
+ * function returns 1 (true). If the strings are different, the function returns 0 (false).
+ *
+ * If either `s1` or `s2` is NULL, the function returns 0 (false).
+ *
+ * Return: 1 if the strings are equal, 0 if they are not.
+ */
 {
 	if (s1 && s2)
 	{

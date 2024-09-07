@@ -19,7 +19,8 @@ char	*ft_strndup(const char *s1, size_t n)
 	char	*result;
 
 	len = ft_strnlen(s1, n);
-	if ((result = ft_strnew(len)))
+	result = ft_strnew(len);
+	if (result)
 	{
 		i = 0;
 		while (i < len)

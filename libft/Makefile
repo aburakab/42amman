@@ -14,6 +14,12 @@ NAME = libft.a
 CC = cc
 FLAGS = -Wall -Werror -Wextra -O3 -c
 INCLUDES = -I$(HEADERS_DIRECTORY)
+
+# Google Test paths (replace with your actual paths)
+GTEST_DIR = /test    # Path to Google Test directory
+GTEST_LIB = $(GTEST_DIR)/build/lib/libgtest.a
+GTEST_INC = -I$(GTEST_DIR)/googletest/include
+
 HEADERS_LIST = libft.h
 HEADERS_DIRECTORY = ./
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
@@ -127,3 +133,26 @@ fclean: clean
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+# Unit testing using Google Test
+TEST_SOURCES = test.c  # Add your test source file here
+TEST_OBJECTS = $(patsubst %.c, %.o, $(TEST_SOURCES))
+TEST_BIN = test_bin
+
+# Compile and link the test binary
+# Unit testing using Google Test
+TEST_SOURCES = tests/test_libft.c  # Add your test source file here
+TEST_OBJECTS = $(patsubst %.c, %.o, $(TEST_SOURCES))
+TEST_BIN = test_bin
+
+# Compile and link the test binary
+test: $(TEST_OBJECTS)
+	$(CC) -o $(TEST_BIN) $(TEST_OBJECTS) $(OBJECTS) $(GTEST_LIB) -lpthread
+
+# Rule for compiling test source files
+%.o: %.c
+	$(CC) $(FLAGS) $(INCLUDES) $(GTEST_INC) -c $< -o $@
+
+# Clean test binaries
+clean_test:
+	$(RM) $(TEST_OBJECTS) $(TEST_BIN)

@@ -14,7 +14,7 @@
 
 char	*ft_strlwr(char *s)
 {
-	size_t i;
+	size_t	i;
 
 	if (s)
 	{
