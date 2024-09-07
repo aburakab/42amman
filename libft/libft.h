@@ -13,7 +13,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdlib.h>
 # include <unistd.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
@@ -111,6 +113,30 @@ char				*ft_strjoin(char const *s1, char const *s2);
 
 char				*ft_strtrim(char const *s1, char const *set);
 
+/**
+ * @brief Splits a string into an array of substrings using a delimiter.
+ *
+ * This function takes a string `s` and splits it into an array of
+ * null-terminated substrings, separated by the character `c`.
+ * The array of substrings is dynamically allocated, and the last
+ * element of the array is set to `NULL` to indicate the end.
+ *
+ * @param s The input string to be split.
+ * @param c The delimiter character used to separate substrings in the string.
+ * @return char** A null-terminated array of substrings. If memory allocation
+ * fails or if `s` is NULL, the function returns NULL.
+ *
+ * @note The caller is responsible for freeing the memory allocated for the
+ * array and the individual substrings.
+ *
+ * @example
+ * char **result = ft_split("Hello,World,42", ',');
+ * The resulting array would be:
+ * result[0] = "Hello"
+ * result[1] = "World"
+ * result[2] = "42"
+ * result[3] = NULL
+ */
 char				**ft_split(char const *str, char delimiter);
 
 char				*ft_itoa(int n);
