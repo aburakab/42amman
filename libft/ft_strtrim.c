@@ -12,48 +12,44 @@
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+static int	is_in_set(char c, const char *set)
+{
+	while (*set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
 /**
- * ft_strtrim - Trims whitespace from the beginning and end of a string.
- *
- * @s: The input string to be trimmed.
- *
- * This function allocates (with malloc) and returns a copy of the string `s` with
- * leading and trailing whitespace characters removed. Whitespace characters are
- * defined as spaces (' '), tabs ('\t'), and newlines ('\n'). If the string consists
- * entirely of whitespace characters, an empty string is returned. If the input
- * string `s` is NULL or if memory allocation fails, the function returns NULL.
- *
- * The caller is responsible for freeing the memory allocated for the returned trimmed
- * string to avoid memory leaks.
- *
- * Return: A pointer to the newly allocated trimmed string, or NULL if memory
- * allocation fails or if the input string `s` is NULL.
+ * @brief Trims characters from the start and end of the string s1 that are found in the set.
+ * 
+ * This function allocates a new string with leading and trailing characters
+ * removed that are part of the set of characters passed in `set`.
+ * 
+ * @param s1 The input string to be trimmed.
+ * @param set The set of characters to remove from the start and end of the string.
+ * @return A newly allocated trimmed string, or NULL on memory allocation failure.
  */
 {
-	char	*result;
-	size_t	i;
 	size_t	start;
-	size_t	finish;
+	size_t	end;
+	char	*trimmed_str;
 
-	if (!s)
+	if (!s1 || !set)
 		return (NULL);
-	i = 0;
 	start = 0;
-	finish = ft_strlen(s);
-	while (ft_isblank(s[start]) || s[start] == '\n')
+	while (s1[start] && is_in_set(s1[start], set))
 		start++;
-	while (finish && (ft_isblank(s[finish - 1]) || s[finish - 1] == '\n'))
-		finish--;
-	if (finish > start)
-		result = ft_strnew(finish - start);
-	else
-		result = ft_strnew(0);
-	if (result)
-	{
-		while (start < finish)
-			result[i++] = s[start++];
-		result[i] = '\0';
-	}
-	return (result);
+	end = ft_strlen(s1);
+	while (end > start && is_in_set(s1[end - 1], set))
+		end--;
+	trimmed_str = (char *)ft_memalloc(sizeof(char) * (end - start + 1));
+	if (!trimmed_str)
+		return (NULL);
+	ft_strncpy(trimmed_str, s1 + start, end - start);
+	return (trimmed_str);
 }

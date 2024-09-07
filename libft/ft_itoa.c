@@ -12,24 +12,46 @@
 
 #include "libft.h"
 
-static int	ft_numlen(int n, int minus)
+static size_t	ft_itoa_len(long num)
 {
-	int	numlen;
+	size_t	len;
 
-	numlen = 1;
-	while (n)
+	len = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
 	{
-		n /= 10;
-		numlen++;
+		len++;
+		num = -num;
 	}
-	return (numlen + minus);
+	while (num >= 1)
+	{
+		len++;
+		num /= 10;
+	}
+	return (len);
 }
 
-static int	abs(int x)
+static char	*ft_num_to_str(long num, char *str, size_t len)
 {
-	if (x < 0)
-		x = -x;
-	return (x);
+	str = ft_strnew(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	if (num < 0)
+	{
+		str[0] = '-';
+		num = -num;
+	}
+	len--;
+	while (len)
+	{
+		str[len] = (num % 10) + '0';
+		num /= 10;
+		len--;
+	}
+	if (str[0] != '-')
+		str[0] = (num % 10) + '0';
+	return (str);
 }
 
 char	*ft_itoa(int n)
@@ -48,29 +70,15 @@ char	*ft_itoa(int n)
  * if memory allocation fails.
  */
 {
+	long	num;
+	size_t	len;
 	char	*str;
-	int		numlen;
-	int		is_negative;
-	int		digit;
 
-	if (n < 0)
-		is_negative = 1;
-	else
-		is_negative = 0;
-	numlen = ft_numlen(n, is_negative);
-	str = ft_strnew(numlen);
-	if (str)
-	{
-		str[numlen--] = '\0';
-		while (numlen >= is_negative)
-		{
-			digit = n % 10;
-			digit = abs(digit);
-			str[numlen--] = digit + '0';
-			n /= 10;
-		}
-		if (is_negative)
-			str[0] = '-';
-	}
+	num = n;
+	len = ft_itoa_len(num);
+	str = 0;
+	str = ft_num_to_str(num, str, len);
+	if (!str)
+		return (NULL);
 	return (str);
 }

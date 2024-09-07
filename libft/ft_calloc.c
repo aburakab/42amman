@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 12:11:26 by moaljabe          #+#    #+#             */
-/*   Updated: 2024/08/31 12:11:27 by moaljabe         ###   ########.fr       */
+/*   Created: 2024/08/31 13:39:16 by moaljabe          #+#    #+#             */
+/*   Updated: 2024/08/31 13:39:17 by moaljabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar(char c)
-/**
- * ft_putchar - Outputs a character to the standard output.
- *
- * @c: The character to be written.
- *
- * This function writes the character `c` to the standard output (file descriptor 1).
- * It is typically used to print single characters to the terminal.
- *
- * Return: None (void).
- */
+void	*ft_calloc(size_t count, size_t size)
 {
-	(void)!write(1, &c, 1);
+	void	*r;
+
+	r = malloc(count * size);
+	if (!r)
+		return (NULL);
+	ft_bzero(r, size * count);
+	return (r);
 }

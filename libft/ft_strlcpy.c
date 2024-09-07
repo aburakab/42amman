@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 12:11:26 by moaljabe          #+#    #+#             */
-/*   Updated: 2024/08/31 12:11:27 by moaljabe         ###   ########.fr       */
+/*   Created: 2024/08/30 16:47:49 by moaljabe          #+#    #+#             */
+/*   Updated: 2024/08/30 16:47:50 by moaljabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar(char c)
-/**
- * ft_putchar - Outputs a character to the standard output.
- *
- * @c: The character to be written.
- *
- * This function writes the character `c` to the standard output (file descriptor 1).
- * It is typically used to print single characters to the terminal.
- *
- * Return: None (void).
- */
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	(void)!write(1, &c, 1);
+	size_t	i;
+	size_t	srclen;
+
+	srclen = ft_strlen(src);
+	if (dstsize == 0)
+		return (srclen);
+	i = 0;
+	while (i < (dstsize - 1) && src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (srclen);
 }

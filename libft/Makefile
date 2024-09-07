@@ -86,14 +86,17 @@ SOURCES_LIST =	ft_atoi.c\
 				ft_strnstr.c\
 				ft_strrchr.c\
 				ft_strrev.c\
-				ft_strsplit.c\
 				ft_strstr.c\
 				ft_strsub.c\
 				ft_strsubchr.c\
 				ft_strtrim.c\
 				ft_strupr.c\
 				ft_tolower.c\
-				ft_toupper.c
+				ft_toupper.c\
+				ft_split.c\
+				ft_strlcpy.c\
+				ft_substr.c\
+				ft_calloc.c\
 
 OBJECTS_DIRECTORY_NAME = obj
 OBJECTS_DIRECTORY = $(OBJECTS_DIRECTORY_NAME)/
@@ -125,10 +128,18 @@ $(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) $(INCLUDES) $< -o $@
 
 clean:
+ifeq ($(OS),Windows_NT)
 	@if exist "$(OBJECTS_DIRECTORY)" $(RMDIR_OBJECTS)
+else
+	@if [ -d "$(OBJECTS_DIRECTORY)" ]; then $(RMDIR_OBJECTS); fi
+endif
 
 fclean: clean
+ifeq ($(OS),Windows_NT)
 	@if exist "$(NAME)" $(RM) $(NAME)
+else
+	@if [ -f "$(NAME)" ]; then $(RM) "$(NAME)"; fi
+endif
 
 re:
 	@$(MAKE) fclean
