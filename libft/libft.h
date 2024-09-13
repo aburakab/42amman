@@ -92,26 +92,6 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 
 /**
- * @brief Copies bytes from `src` to `dst` stopping after copying `c`,
- * or after `n` bytes.
- *
- * @param dst Pointer to the destination memory area.
- * @param src Pointer to the source memory area.
- * @param c The byte to stop copying at.
- * @param n Maximum number of bytes to copy.
- * @return void* Pointer to the next byte in `dst` after `c`,
- * or NULL if `c` wasn't found.
- *
- * @example
- * char src[] = "abcdefg";
- * char dst[10];
- * ft_memccpy(dst, src, 'd', 7);
- * // Copies from `src` to `dst` until the character 'd' is found.
- * // The result in `dst` will be: "abcd".
- */
-void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
-
-/**
  * @brief Copies `len` bytes from `src` to `dst`,
  * handling overlapping memory areas.
  *
@@ -212,21 +192,6 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char				*ft_strdup(const char *s1);
 
 /**
- * @brief Copies the string `src` to `dst` (including the null-terminator).
- *
- * @param dst Pointer to the destination buffer.
- * @param src Pointer to the source string.
- * @return char* Pointer to the destination string `dst`.
- *
- * @example
- * char dst[10];
- * ft_strcpy(dst, "Hello");
- * // Copies "Hello" into `dst`.
- * // The result in `dst` will be "Hello".
- */
-char				*ft_strcpy(char *dst, const char *src);
-
-/**
  * @brief Copies up to `len` characters from `src` to `dst`.
  * If `src` is shorter than `len`,
  * the remaining characters in `dst` will be filled with null bytes.
@@ -243,21 +208,6 @@ char				*ft_strcpy(char *dst, const char *src);
  * // The result in `dst` will be "Hello\0\0\0".
  */
 char				*ft_strncpy(char *dst, const char *src, size_t len);
-
-/**
- * @brief Concatenates the string `s2` to the end of `s1`.
- *
- * @param s1 Pointer to the destination string.
- * @param s2 Pointer to the source string.
- * @return char* Pointer to the destination string `s1`.
- *
- * @example
- * char s1[15] = "Hello";
- * ft_strcat(s1, ", World!");
- * // Concatenates ", World!" to "Hello".
- * // The result in `s1` will be "Hello, World!".
- */
-char				*ft_strcat(char *s1, const char *s2);
 
 /**
  * @brief Appends the string `src` to `dst`,
@@ -357,21 +307,6 @@ char				*ft_strstr(const char *haystack, const char *needle);
  */
 char				*ft_strnstr(const char *haystack,
 						const char *needle, size_t len);
-
-/**
- * @brief Compares the two strings `s1` and `s2`.
- *
- * @param s1 The first string to compare.
- * @param s2 The second string to compare.
- * @return int An integer less than, equal to,
- * or greater than zero if `s1` is found,
- * respectively, to be less than, to match, or to be greater than `s2`.
- *
- * @example
- * int result = ft_strcmp("abc", "abd");
- * // The result will be negative, since "abc" < "abd".
- */
-int					ft_strcmp(const char *s1, const char *s2);
 
 /**
  * @brief Compares up to `n` characters of the strings `s1` and `s2`.
@@ -501,11 +436,11 @@ int					ft_tolower(int c);
  * or NULL if the allocation fails.
  *
  * @example
- * int *arr = (int *)ft_memalloc(5 * sizeof(int));
+ * int *arr = (int *)ft_malloc_gc(5 * sizeof(int));
  * // Allocates memory for 5 integers, all initialized to 0.
  * // The array can be accessed as arr[0], arr[1], etc.
  */
-void				*ft_memalloc(size_t size);
+void				*ft_malloc_gc(size_t size);
 
 /**
  * @brief Frees the memory pointed to by `ap` and sets the pointer to NULL.
@@ -513,7 +448,7 @@ void				*ft_memalloc(size_t size);
  * @param ap Pointer to the memory area to free.
  *
  * @example
- * int *arr = (int *)ft_memalloc(5 * sizeof(int));
+ * int *arr = (int *)ft_malloc_gc(5 * sizeof(int));
  * ft_memdel((void **)&arr);
  * // Frees the memory allocated for `arr` and sets the pointer to NULL.
  */
@@ -532,31 +467,6 @@ void				ft_memdel(void **ap);
  * // Allocates a new string of size 10, initialized to 0.
  */
 char				*ft_strnew(size_t size);
-
-/**
- * @brief Frees the string pointed to by `as` and sets the pointer to NULL.
- *
- * @param as Pointer to the string to free.
- *
- * @example
- * char *str = ft_strnew(10);
- * ft_strdel(&str);
- * // Frees the memory allocated for `str` and sets the pointer to NULL.
- */
-void				ft_strdel(char **as);
-
-/**
- * @brief Sets every character of the string `s` to the null character (`\0`).
- *
- * @param s Pointer to the string to clear.
- *
- * @example
- * char str[] = "Hello";
- * ft_strclr(str);
- * // Sets each character of `str` to '\0'.
- * // The result will be an empty string.
- */
-void				ft_strclr(char *s);
 
 /**
  * @brief Applies the function `f` to each character of the string `s`.
@@ -752,51 +662,6 @@ char				**ft_split(char const *str, char delimiter);
 char				*ft_itoa(int n);
 
 /**
- * @brief Outputs the character `c` to the standard output.
- *
- * @param c The character to output.
- *
- * @example
- * ft_putchar('A');
- * // The result will be the character 'A' printed to the standard output.
- */
-void				ft_putchar(char c);
-
-/**
- * @brief Outputs the string `s` to the standard output.
- *
- * @param s The string to output.
- *
- * @example
- * ft_putstr("Hello, World!");
- * // The result will be "Hello, World!" printed to the standard output.
- */
-void				ft_putstr(char const *s);
-
-/**
- * @brief Outputs the string `s` to the standard output followed by a newline.
- *
- * @param s The string to output.
- *
- * @example
- * ft_putendl("Hello, World!");
- * // The result will be "Hello, World!" printed to the standard output,
- * followed by a newline.
- */
-void				ft_putendl(char const *s);
-
-/**
- * @brief Outputs the integer `n` to the standard output.
- *
- * @param n The integer to output.
- *
- * @example
- * ft_putnbr(42);
- * // The result will be "42" printed to the standard output.
- */
-void				ft_putnbr(int n);
-
-/**
  * @brief Outputs the character `c` to the given file descriptor.
  *
  * @param c The character to output.
@@ -909,10 +774,10 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
  * @example
  * t_list *list = ft_lstnew("Hello", 6);
  * t_list *new_elem = ft_lstnew("World", 6);
- * ft_lstadd(&list, new_elem);
+ * ft_lstadd_front(&list, new_elem);
  * // Adds `new_elem` to the beginning of `list`.
  */
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd_front(t_list **alst, t_list *new);
 
 /**
  * @brief Iterates the list `lst` and
@@ -945,55 +810,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
  * // Creates a new list with the content of the original list duplicated.
  */
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-
-/**
- * @brief Checks if the given character `c` is an uppercase letter.
- *
- * @param c The character to check.
- * @return int 1 if `c` is an uppercase letter, 0 otherwise.
- *
- * @example
- * int result = ft_isupper('A');
- * // The result will be 1 since 'A' is an uppercase letter.
- */
-int					ft_isupper(int c);
-
-/**
- * @brief Checks if the given character `c` is a lowercase letter.
- *
- * @param c The character to check.
- * @return int 1 if `c` is a lowercase letter, 0 otherwise.
- *
- * @example
- * int result = ft_islower('a');
- * // The result will be 1 since 'a' is a lowercase letter.
- */
-int					ft_islower(int c);
-
-/**
- * @brief Checks if the given character `c` is a whitespace character.
- *
- * @param c The character to check.
- * @return int 1 if `c` is a whitespace character, 0 otherwise.
- *
- * @example
- * int result = ft_isspace(' ');
- * // The result will be 1 since ' ' is a whitespace character.
- */
-int					ft_isspace(int c);
-
-/**
- * @brief Checks if the given character `c` is a blank character
- * (space or tab).
- *
- * @param c The character to check.
- * @return int 1 if `c` is a blank character, 0 otherwise.
- *
- * @example
- * int result = ft_isblank(' ');
- * // The result will be 1 since ' ' is a blank character.
- */
-int					ft_isblank(int c);
 
 /**
  * @brief Computes the length of the string `s`,
@@ -1035,10 +851,10 @@ char				*ft_strndup(const char *s1, size_t n);
  * @example
  * t_list *list = ft_lstnew("Hello", 6);
  * t_list *new_elem = ft_lstnew("World", 6);
- * ft_lstaddback(&list, new_elem);
+ * ft_lstadd_back(&list, new_elem);
  * // Adds `new_elem` to the end of `list`.
  */
-void				ft_lstaddback(t_list **alst, t_list *new);
+void				ft_lstadd_back(t_list **alst, t_list *new);
 
 /**
  * @brief Converts all characters of the string `s` to lowercase.
@@ -1095,20 +911,6 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
  * // The result will be "olleH".
  */
 char				*ft_strrev(char *s);
-
-/**
- * @brief Locates the first occurrence of the character `c` in the string `s`,
- * or any character in the string `c`.
- *
- * @param s The string to search in.
- * @param c The character or string of characters to locate.
- * @return char* A pointer to the located character in `s`, or NULL if not found.
- *
- * @example
- * char *result = ft_strchrs("Hello, World!", 'l');
- * // The result will point to the first 'l' in "Hello".
- */
-char				*ft_strchrs(const char *s, int c);
 
 /**
  * @brief Allocates (with malloc) and returns a substring of `s`,

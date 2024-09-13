@@ -34,7 +34,9 @@ char	*ft_strsubchr(const char *s, char c)
 {
 	char	*ptr;
 
-	ptr = ft_strchrs(s, c);
+	if (!s)
+		return (NULL);
+	ptr = ft_strchr(s, c);
 	if (!ptr)
 		return (NULL);
 	return (ft_strsub(s, 0, ptr - s));

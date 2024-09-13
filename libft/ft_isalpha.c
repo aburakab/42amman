@@ -27,5 +27,5 @@ int	ft_isalpha(int c)
  * Return: 1 if `c` is an alphabetic letter, 0 otherwise.
  */
 {
-	return (ft_islower(c) || ft_isupper(c));
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

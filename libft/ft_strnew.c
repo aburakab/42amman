@@ -29,5 +29,5 @@ char	*ft_strnew(size_t size)
  * Return: A pointer to the newly allocated string, or NULL if memory allocation fails.
  */
 {
-	return ((char *)ft_memalloc(sizeof(char) * (size + 1)));
+	return ((char *) ft_malloc_gc(sizeof(char) * (size + 1)));
 }

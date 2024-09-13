@@ -48,7 +48,7 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	i = number_of_digits(n);
-	str = malloc(sizeof(char) * (i + 1));
+	str = ft_malloc_gc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
 	str[i--] = '\0';

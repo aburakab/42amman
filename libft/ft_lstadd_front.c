@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 /**
- * ft_lstadd - Adds a new element at the beginning of a linked list.
+ * ft_lstadd_front - Adds a new element at the beginning of a linked list.
  *
  * @alst: A pointer to the pointer of the first element of the linked list.
  * @new: The new element to be added to the list.
@@ -29,10 +29,9 @@ void	ft_lstadd(t_list **alst, t_list *new)
  * Return: None (void).
  */
 {
-	if (alst)
-	{
-		if (new)
-			new->next = *alst;
-		*alst = new;
-	}
+	if (!alst)
+		return ;
+	if (new)
+		new->next = *alst;
+	*alst = new;
 }

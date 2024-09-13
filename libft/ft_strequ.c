@@ -12,6 +12,24 @@
 
 #include "libft.h"
 
+static int	compare(const char *s1, const char *s2)
+{
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+	size_t			i;
+
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	i = 0;
+	while (ptr1[i] || ptr2[i])
+	{
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
+		i++;
+	}
+	return (0);
+}
+
 int	ft_strequ(char const *s1, char const *s2)
 /**
  * ft_strequ - Compares two strings for equality.
@@ -31,7 +49,7 @@ int	ft_strequ(char const *s1, char const *s2)
 {
 	if (s1 && s2)
 	{
-		if (ft_strcmp(s1, s2))
+		if (compare(s1, s2))
 			return (0);
 		return (1);
 	}

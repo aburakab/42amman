@@ -22,10 +22,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return ((char *)ft_memalloc(1));
+		return ((char *) ft_malloc_gc(1));
 	if (len > s_len - start)
 		len = s_len - start;
-	substr = (char *)ft_memalloc(sizeof(char) * (len + 1));
+	substr = (char *) ft_malloc_gc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
 	i = 0;

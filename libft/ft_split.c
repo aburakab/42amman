@@ -55,7 +55,7 @@ static char	**malloc_list(char const *s, char c)
 {
 	char	**lst;
 
-	lst = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	lst = (char **)ft_malloc_gc((ft_countword(s, c) + 1) * sizeof(char *));
 	if (!lst)
 		return (NULL);
 	return (lst);

@@ -47,7 +47,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (end > start && is_in_set(s1[end - 1], set))
 		end--;
-	trimmed_str = (char *)ft_memalloc(sizeof(char) * (end - start + 1));
+	trimmed_str = (char *) ft_malloc_gc(sizeof(char) * (end - start + 1));
 	if (!trimmed_str)
 		return (NULL);
 	ft_strncpy(trimmed_str, s1 + start, end - start);

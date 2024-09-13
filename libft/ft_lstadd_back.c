@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moaljabe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	ft_lstaddback(t_list **alst, t_list *new)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 /**
- * ft_lstaddback - Adds a new element to the end of a linked list.
+ * ft_lstadd_back - Adds a new element to the end of a linked list.
  *
  * @alst: A pointer to the pointer of the first element of the linked list.
  * @new: The new element to be added to the end of the list.
