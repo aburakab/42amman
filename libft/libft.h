@@ -192,24 +192,6 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char				*ft_strdup(const char *s1);
 
 /**
- * @brief Copies up to `len` characters from `src` to `dst`.
- * If `src` is shorter than `len`,
- * the remaining characters in `dst` will be filled with null bytes.
- *
- * @param dst Pointer to the destination buffer.
- * @param src Pointer to the source string.
- * @param len Number of characters to copy.
- * @return char* Pointer to the destination string `dst`.
- *
- * @example
- * char dst[10];
- * ft_strncpy(dst, "Hello", 8);
- * // Copies "Hello" into `dst` and fills the rest with null characters.
- * // The result in `dst` will be "Hello\0\0\0".
- */
-char				*ft_strncpy(char *dst, const char *src, size_t len);
-
-/**
  * @brief Appends the string `src` to `dst`,
  * ensuring that `dst` is null-terminated
  * and the total size of the destination buffer is `dstsize`.
@@ -227,23 +209,6 @@ char				*ft_strncpy(char *dst, const char *src, size_t len);
  * the result will be "Hello, Wo".
  */
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
-
-/**
- * @brief Appends up to `n` characters from the string `s2`
- * to the end of `s1`.
- *
- * @param s1 Pointer to the destination string.
- * @param s2 Pointer to the source string.
- * @param n Maximum number of characters to append.
- * @return char* Pointer to the destination string `s1`.
- *
- * @example
- * char s1[15] = "Hello";
- * ft_strncat(s1, ", World!", 3);
- * // Appends the first 3 characters of `s2` to `s1`.
- * // The result in `s1` will be "Hello, Wo".
- */
-char				*ft_strncat(char *s1, const char *s2, size_t n);
 
 /**
  * @brief Locates the first occurrence of the character `c`
@@ -273,21 +238,6 @@ char				*ft_strchr(const char *s, int c);
  * // `result` will point to the "o" in "World!".
  */
 char				*ft_strrchr(const char *s, int c);
-
-/**
- * @brief Locates the first occurrence of the substring `needle`
- * in the string `haystack`.
- *
- * @param haystack The string to search in.
- * @param needle The substring to search for.
- * @return char* Pointer to the beginning of the located substring,
- * or NULL if the substring is not found.
- *
- * @example
- * char *result = ft_strstr("Hello, World!", "World");
- * // `result` will point to the "World!" part of the string.
- */
-char				*ft_strstr(const char *haystack, const char *needle);
 
 /**
  * @brief Locates the first occurrence of the substring `needle`
@@ -443,18 +393,6 @@ int					ft_tolower(int c);
 void				*ft_malloc_gc(size_t size);
 
 /**
- * @brief Frees the memory pointed to by `ap` and sets the pointer to NULL.
- *
- * @param ap Pointer to the memory area to free.
- *
- * @example
- * int *arr = (int *)ft_malloc_gc(5 * sizeof(int));
- * ft_memdel((void **)&arr);
- * // Frees the memory allocated for `arr` and sets the pointer to NULL.
- */
-void				ft_memdel(void **ap);
-
-/**
  * @brief Allocates (with malloc) and returns a new string of size `size`,
  * initialized to 0.
  *
@@ -467,21 +405,6 @@ void				ft_memdel(void **ap);
  * // Allocates a new string of size 10, initialized to 0.
  */
 char				*ft_strnew(size_t size);
-
-/**
- * @brief Applies the function `f` to each character of the string `s`.
- *
- * @param s The string to iterate over.
- * @param f The function to apply to each character.
- *
- * @example
- * void to_upper(char *c) { *c = ft_toupper(*c); }
- * char str[] = "hello";
- * ft_striter(str, to_upper);
- * // Converts each character in `str` to uppercase.
- * // The result will be "HELLO".
- */
-void				ft_striter(char *s, void (*f)(char *));
 
 /**
  * @brief Applies the function `f` to each character of the string `s`,
@@ -498,26 +421,6 @@ void				ft_striter(char *s, void (*f)(char *));
  * // The result will be "HELLO".
  */
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-
-/**
- * @brief Applies the function `f` to each character of the string `s`,
- * returning a new string.
- *
- * Allocates (with malloc) and
- * returns a new string resulting from the successive applications
- * of the function `f` to each character of the string `s`.
- *
- * @param s The string to map over.
- * @param f The function to apply to each character.
- * @return char* A new string with the transformed characters,
- * or NULL if memory allocation fails.
- *
- * @example
- * char to_upper(char c) { return ft_toupper(c); }
- * char *str = ft_strmap("hello", to_upper);
- * // The result will be "HELLO", a newly allocated string.
- */
-char				*ft_strmap(char const *s, char (*f)(char));
 
 /**
  * @brief Applies the function `f` to each character of the string `s`
@@ -540,53 +443,6 @@ char				*ft_strmap(char const *s, char (*f)(char));
  * // The result will be "HELLO", a newly allocated string.
  */
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-
-/**
- * @brief Compares two strings lexicographically,
- * returning 1 if they are identical, 0 otherwise.
- *
- * @param s1 The first string to compare.
- * @param s2 The second string to compare.
- * @return int 1 if the strings are equal, 0 if they differ.
- *
- * @example
- * int result = ft_strequ("abc", "abc");
- * // The result will be 1, since the strings are identical.
- */
-int					ft_strequ(char const *s1, char const *s2);
-
-/**
- * @brief Compares up to `n` characters of two strings lexicographically,
- * returning 1 if they are identical, 0 otherwise.
- *
- * @param s1 The first string to compare.
- * @param s2 The second string to compare.
- * @param n The maximum number of characters to compare.
- * @return int 1 if the strings are equal, 0 if they differ.
- *
- * @example
- * int result = ft_strnequ("abc", "abcde", 3);
- * // The result will be 1,
- * since the first 3 characters of both strings are equal.
- */
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
-
-/**
- * @brief Allocates (with malloc) and
- * returns a substring from the string `s`,
- * starting at index `start` and of length `len`.
- *
- * @param s The source string.
- * @param start The starting index of the substring.
- * @param len The length of the substring.
- * @return char* A newly allocated substring,
- * or NULL if memory allocation fails.
- *
- * @example
- * char *substr = ft_strsub("Hello, World!", 7, 5);
- * // The result will be "World", a newly allocated string.
- */
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
 
 /**
  * @brief Allocates (with malloc) and returns a new string,
@@ -812,37 +668,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /**
- * @brief Computes the length of the string `s`,
- * but no more than `maxlen` characters.
- *
- * @param s The string to measure.
- * @param maxlen The maximum number of characters to consider.
- * @return size_t The length of the string or `maxlen`,
- * whichever is smaller.
- *
- * @example
- * size_t result = ft_strnlen("Hello, World!", 5);
- * // The result will be 5, since we stop at the 5th character.
- */
-size_t				ft_strnlen(const char *s, size_t maxlen);
-
-/**
- * @brief Allocates (with malloc) and returns a new string,
- * which is a duplicate of `s1`,
- * but with at most `n` characters copied.
- *
- * @param s1 The string to duplicate.
- * @param n The maximum number of characters to copy.
- * @return char* A newly allocated string,
- * or NULL if memory allocation fails.
- *
- * @example
- * char *result = ft_strndup("Hello, World!", 5);
- * // The result will be "Hello", a newly allocated string.
- */
-char				*ft_strndup(const char *s1, size_t n);
-
-/**
  * @brief Adds the element `new` at the end of the list.
  *
  * @param alst The pointer to the first element of the list.
@@ -855,32 +680,6 @@ char				*ft_strndup(const char *s1, size_t n);
  * // Adds `new_elem` to the end of `list`.
  */
 void				ft_lstadd_back(t_list **alst, t_list *new);
-
-/**
- * @brief Converts all characters of the string `s` to lowercase.
- *
- * @param s The string to convert.
- * @return char* A pointer to the converted string.
- *
- * @example
- * char str[] = "HELLO";
- * ft_strlwr(str);
- * // The result will be "hello".
- */
-char				*ft_strlwr(char *s);
-
-/**
- * @brief Converts all characters of the string `s` to uppercase.
- *
- * @param str The string to convert.
- * @return char* A pointer to the converted string.
- *
- * @example
- * char str[] = "hello";
- * ft_strupr(str);
- * // The result will be "HELLO".
- */
-char				*ft_strupr(char *str);
 
 /**
  * @brief Allocates (with malloc) and
@@ -898,33 +697,5 @@ char				*ft_strupr(char *str);
  * // The result will be "World", a newly allocated string.
  */
 char				*ft_substr(char const *s, unsigned int start, size_t len);
-
-/**
- * @brief Reverses the string `s`.
- *
- * @param s The string to reverse.
- * @return char* A pointer to the reversed string.
- *
- * @example
- * char str[] = "Hello";
- * ft_strrev(str);
- * // The result will be "olleH".
- */
-char				*ft_strrev(char *s);
-
-/**
- * @brief Allocates (with malloc) and returns a substring of `s`,
- * starting from the first occurrence of `c`.
- *
- * @param s The source string.
- * @param c The delimiter character.
- * @return char* A newly allocated substring starting from `c`,
- * or NULL if memory allocation fails.
- *
- * @example
- * char *result = ft_strsubchr("Hello, World!", 'W');
- * // The result will be "World!", a newly allocated string.
- */
-char				*ft_strsubchr(const char *s, char c);
 
 #endif

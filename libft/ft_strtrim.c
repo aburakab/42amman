@@ -23,6 +23,21 @@ static int	is_in_set(char c, const char *set)
 	return (0);
 }
 
+static char	*copy(char *dst, const char *src, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (src[i] && i < len)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < len)
+		dst[i++] = '\0';
+	return (dst);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 /**
  * @brief Trims characters from the start and end of the string s1 that are found in the set.
@@ -50,6 +65,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed_str = (char *) ft_malloc_gc(sizeof(char) * (end - start + 1));
 	if (!trimmed_str)
 		return (NULL);
-	ft_strncpy(trimmed_str, s1 + start, end - start);
+	copy(trimmed_str, s1 + start, end - start);
 	return (trimmed_str);
 }

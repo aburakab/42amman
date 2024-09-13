@@ -37,7 +37,6 @@ SOURCES_LIST =	ft_atoi.c\
 				ft_memchr.c\
 				ft_memcmp.c\
 				ft_memcpy.c\
-				ft_memdel.c\
 				ft_memmove.c\
 				ft_memset.c\
 				ft_putchar_fd.c\
@@ -46,30 +45,16 @@ SOURCES_LIST =	ft_atoi.c\
 				ft_putstr_fd.c\
 				ft_strchr.c\
 				ft_strdup.c\
-				ft_strequ.c\
-				ft_striter.c\
 				ft_striteri.c\
 				ft_strjoin.c\
 				ft_strlcat.c\
 				ft_strlen.c\
-				ft_strlwr.c\
-				ft_strmap.c\
 				ft_strmapi.c\
-				ft_strncat.c\
 				ft_strncmp.c\
-				ft_strncpy.c\
-				ft_strndup.c\
-				ft_strnequ.c\
 				ft_strnew.c\
-				ft_strnlen.c\
 				ft_strnstr.c\
 				ft_strrchr.c\
-				ft_strrev.c\
-				ft_strstr.c\
-				ft_strsub.c\
-				ft_strsubchr.c\
 				ft_strtrim.c\
-				ft_strupr.c\
 				ft_tolower.c\
 				ft_toupper.c\
 				ft_split.c\
