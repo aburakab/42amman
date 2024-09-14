@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*r;
 
+	if (size != 0 && count > ((size_t)-1) / size)
+		return (NULL);
 	r = ft_malloc_gc(count * size);
 	if (!r)
 		return (NULL);
